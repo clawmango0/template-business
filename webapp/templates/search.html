@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search - Template Manager</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        header { background: #2c3e50; color: white; padding: 20px 0; margin-bottom: 30px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        h1 { font-size: 24px; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; }
+        
+        .card { background: white; border-radius: 8px; padding: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        
+        .search-box { display: flex; gap: 10px; margin-bottom: 20px; }
+        .search-box input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; }
+        .search-box button { padding: 12px 24px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        
+        .form-list { list-style: none; }
+        .form-list li { padding: 15px; border-bottom: 1px solid #eee; }
+        .form-list li:last-child { border-bottom: none; }
+        .form-list a { color: #2c3e50; text-decoration: none; font-size: 18px; }
+        .form-list a:hover { color: #3498db; }
+        .form-meta { font-size: 13px; color: #888; margin-top: 6px; }
+        
+        .no-results { text-align: center; color: #888; padding: 40px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🔍 Search Forms</h1>
+            <nav>
+                <a href="/">Home</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <form method="GET" action="/search" class="search-box">
+                <input type="text" name="q" value="{{ query }}" placeholder="Search by title, company, or content..." autofocus>
+                <button type="submit">Search</button>
+            </form>
+            
+            {% if query %}
+                {% if results %}
+                <ul class="form-list">
+                    {% for form in results %}
+                    <li>
+                        <a href="/form/{{ form[0] }}">{{ form[2] }}</a>
+                        <div class="form-meta">
+                            {{ form[1] }} | {{ form[3] or 'No company' }} | {{ form[4] }}
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <div class="no-results">
+                    <p>No forms found matching "{{ query }}"</p>
+                </div>
+                {% endif %}
+            {% else %}
+            <div class="no-results">
+                <p>Enter a search term to find forms</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
