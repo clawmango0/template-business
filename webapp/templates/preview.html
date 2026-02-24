@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview: {{ template.name }} - Template Business Manager</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px 0; margin-bottom: 30px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        h1 { font-size: 24px; }
+        nav a { color: white; text-decoration: none; }
+        
+        .preview-header { background: white; border-radius: 12px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .preview-header h2 { color: #333; margin-bottom: 10px; }
+        .preview-header .meta { color: #888; font-size: 14px; }
+        .preview-header .meta span { margin-right: 20px; }
+        
+        .template-preview { background: white; border-radius: 12px; padding: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .template-preview h3 { color: #667eea; margin: 25px 0 15px 0; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .template-preview p { color: #666; margin: 10px 0; }
+        .placeholder { background: #f0f0f0; padding: 15px; border-radius: 6px; color: #888; font-style: italic; }
+        
+        .actions { margin-top: 30px; padding-top: 20px; border-top: 2px solid #f0f0f0; display: flex; gap: 15px; }
+        .btn { padding: 14px 28px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-primary:hover { background: #5a6fd6; }
+        .btn-secondary { background: #e0e0e0; color: #333; }
+        
+        .fields-list { background: #f8f9fa; border-radius: 8px; padding: 20px; margin-top: 20px; }
+        .fields-list h4 { color: #333; margin-bottom: 15px; }
+        .field-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e0e0e0; }
+        .field-item:last-child { border-bottom: none; }
+        .field-name { font-weight: 600; color: #333; }
+        .field-type { color: #888; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>👁️ Template Preview</h1>
+            <nav><a href="/">← Back to Dashboard</a></nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="preview-header">
+            <h2>{{ template.name }}</h2>
+            <div class="meta">
+                <span>Category: {{ template.category }}</span>
+                <span>Fields: {{ template.fields|length }}</span>
+            </div>
+        </div>
+        
+        <div class="template-preview">
+            <h3>Sample Preview</h3>
+            <p>This is how your filled form will look:</p>
+            
+            <h3>Section Example</h3>
+            <div class="placeholder">
+                {{ template.fields[0]|replace('_', ' ')|title }}: [User enters {{ template.fields[0]|replace('_', ' ') }}]
+            </div>
+            
+            <h3>Another Section</h3>
+            <div class="placeholder">
+                {{ template.fields[1]|replace('_', ' ')|title if template.fields[1] else 'Additional Field' }}: [User enters data]
+            </div>
+            
+            <div class="fields-list">
+                <h4>📝 All Fields in This Template</h4>
+                {% for field in template.fields %}
+                <div class="field-item">
+                    <span class="field-name">{{ field|replace('_', ' ')|title }}</span>
+                    <span class="field-type">Text field</span>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="actions">
+                <a href="/form/new/{{ template_type }}" class="btn btn-primary">Use This Template</a>
+                <a href="/templates" class="btn btn-secondary">Browse More</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
