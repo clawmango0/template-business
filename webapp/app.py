@@ -145,6 +145,101 @@ def get_categories(templates):
         categories[cat].append({'type': slug, 'name': template['name'], 'id': template.get('id')})
     return categories
 
+# Persona/Role definitions with associated templates
+PERSONAS = {
+    'hr': {
+        'name': 'HR Professional',
+        'icon': '👥',
+        'description': 'People operations, hiring, and employee management',
+        'categories': ['HR', 'SOPs', 'Legal'],
+        'templates': ['onboarding', 'employee_handbook', 'job_description', 'performance_review', 'it_onboarding', 'contractor_agreement', 'employment_offer', 'nda']
+    },
+    'it': {
+        'name': 'IT Professional',
+        'icon': '💻',
+        'description': 'Technology, security, and infrastructure',
+        'categories': ['SOPs', 'Operations'],
+        'templates': ['incident_response', 'change_management', 'access_management', 'data_backup', 'physical_security', 'saas_selection', 'saas_onboarding', 'vendor_management', 'maintenance_log']
+    },
+    'project_manager': {
+        'name': 'Project Manager',
+        'icon': '📋',
+        'description': 'Project planning, tracking, and delivery',
+        'categories': ['Project', 'Executive'],
+        'templates': ['project_charter', 'status_report', 'meeting_notes', 'raci_matrix', 'risk_register', 'decision_log', 'retrospective', 'okr_tracker']
+    },
+    'finance': {
+        'name': 'Finance Professional',
+        'icon': '💰',
+        'description': 'Financial management, accounting, and billing',
+        'categories': ['Finance', 'Executive'],
+        'templates': ['invoice', 'expense_report', 'budget_tracker', 'equipment_inventory', 'board_update', 'qbr']
+    },
+    'sales': {
+        'name': 'Sales & Marketing',
+        'icon': '📢',
+        'description': 'Sales, marketing, and customer acquisition',
+        'categories': ['Marketing', 'Customer Success', 'Legal'],
+        'templates': ['campaign_brief', 'success_plan', 'client_onboarding', 'nda', 'contractor_agreement', 'terms_of_service']
+    },
+    'operations': {
+        'name': 'Operations Manager',
+        'icon': '⚙️',
+        'description': 'Day-to-day operations and process management',
+        'categories': ['Operations', 'SOPs'],
+        'templates': ['maintenance_log', 'shift_handover', 'client_onboarding', 'vendor_management', 'onboarding', 'change_management']
+    },
+    'executive': {
+        'name': 'Executive/Leadership',
+        'icon': '🏆',
+        'description': 'Strategic planning and leadership',
+        'categories': ['Executive', 'Finance', 'Legal'],
+        'templates': ['board_update', 'qbr', 'okr_tracker', 'privacy_policy', 'terms_of_service', 'budget_tracker', 'project_charter']
+    },
+    'legal': {
+        'name': 'Legal & Compliance',
+        'icon': '⚖️',
+        'description': 'Legal documents and compliance',
+        'categories': ['Legal', 'Healthcare'],
+        'templates': ['nda', 'contractor_agreement', 'employment_offer', 'service_agreement', 'statement_of_work', 'privacy_policy', 'terms_of_service', 'hipaa_policy']
+    },
+    'healthcare': {
+        'name': 'Healthcare Admin',
+        'icon': '🏥',
+        'description': 'Healthcare operations and compliance',
+        'categories': ['Healthcare', 'HR', 'Legal'],
+        'templates': ['hipaa_policy', 'employee_handbook', 'onboarding', 'nda', 'privacy_policy']
+    },
+    'construction': {
+        'name': 'Construction Manager',
+        'icon': '🏗️',
+        'description': 'Construction project management',
+        'categories': ['Construction', 'Operations'],
+        'templates': ['construction_checklist', 'project_charter', 'maintenance_log', 'equipment_inventory', 'expense_report']
+    },
+    'retail': {
+        'name': 'Retail Manager',
+        'icon': '🏪',
+        'description': 'Retail store operations',
+        'categories': ['Retail', 'Operations', 'Finance'],
+        'templates': ['store_opening', 'shift_handover', 'expense_report', 'inventory', 'onboarding']
+    }
+}
+
+def get_persona_templates(persona_slug):
+    """Get templates for a specific persona"""
+    templates = get_templates()
+    persona = PERSONAS.get(persona_slug)
+    if not persona:
+        return {}
+    
+    result = {}
+    for slug, template in templates.items():
+        if slug in persona['templates']:
+            result[slug] = template
+    
+    return result
+
 # Password hashing
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
@@ -197,7 +292,34 @@ def index():
                          total_users=total_users,
                          recent_forms=recent_forms,
                          top_templates=top_templates,
-                         status_counts=status_counts)
+                         status_counts=status_counts,
+                         personas=PERSONAS)
+
+@app.route('/persona/<persona_slug>')
+def persona_templates(persona_slug):
+    """Show templates filtered by persona/role"""
+    if persona_slug not in PERSONAS:
+        flash('Persona not found', 'error')
+        return redirect(url_for('index'))
+    
+    persona = PERSONAS[persona_slug]
+    templates = get_templates()
+    persona_temps = get_persona_templates(persona_slug)
+    
+    # Group by category
+    categories = {}
+    for slug, template in persona_temps.items():
+        cat = template['category']
+        if cat not in categories:
+            categories[cat] = []
+        categories[cat].append({'type': slug, 'name': template['name'], 'id': template.get('id')})
+    
+    return render_template('persona.html',
+                         persona_slug=persona_slug,
+                         persona=persona,
+                         templates=persona_temps,
+                         categories=categories,
+                         personas=PERSONAS)
 
 # ============== AUTH ROUTES ==============
 

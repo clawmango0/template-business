@@ -85,6 +85,20 @@
             <a href="/export/all" class="btn btn-secondary">Export All Data</a>
         </div>
         
+        <!-- Persona Navigation -->
+        <div class="card">
+            <h2>👤 Select Your Role to Get Started</h2>
+            <p style="color: #666; margin-bottom: 20px;">Choose your role to see the most relevant templates for your job:</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px;">
+                {% for slug, p in personas.items() %}
+                <a href="/persona/{{ slug }}" style="display: block; background: white; border: 2px solid #e0e0e0; border-radius: 12px; padding: 20px; text-align: center; text-decoration: none; transition: all 0.3s;">
+                    <div style="font-size: 36px; margin-bottom: 10px;">{{ p.icon }}</div>
+                    <div style="font-weight: 600; color: #333; font-size: 14px;">{{ p.name }}</div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        
         <div class="stats">
             <div class="stat-card">
                 <h3>Total Forms</h3>
