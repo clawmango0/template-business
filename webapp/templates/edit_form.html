@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Form - Template Manager</title>
+    <title>Edit Form - Template Manager</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
@@ -18,60 +18,53 @@
         
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
-        .form-group input, .form-group textarea, .form-group select { 
+        .form-group input, .form-group textarea { 
             width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; 
         }
         .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; }
         .form-group textarea { min-height: 100px; resize: vertical; }
-        .form-group .hint { font-size: 13px; color: #888; margin-top: 6px; }
         
         .btn { padding: 14px 28px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; text-decoration: none; display: inline-block; }
         .btn-primary { background: #667eea; color: white; }
         .btn-primary:hover { background: #5a6fd6; }
         .btn-secondary { background: #e0e0e0; color: #333; margin-left: 10px; }
-        
-        .template-badge { display: inline-block; background: #667eea; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>📋 New {{ template.name }}</h1>
+            <h1>✏️ Edit Form</h1>
             <nav><a href="/">← Back</a></nav>
         </div>
     </header>
     
     <div class="container">
         <div class="card">
-            <span class="template-badge">{{ template.category }}</span>
-            
-            <form method="POST" action="/save">
-                <input type="hidden" name="template_type" value="{{ template_type }}">
-                
+            <form method="POST" action="/form/{{ form[0] }}/edit">
                 <div class="form-group">
                     <label>Form Title *</label>
-                    <input type="text" name="title" required placeholder="e.g., Q1 2024 Board Update">
+                    <input type="text" name="title" value="{{ form[2] }}" required>
                 </div>
                 
                 <div class="form-group">
                     <label>Company Name</label>
-                    <input type="text" name="company_name" placeholder="Your Company Name">
+                    <input type="text" name="company_name" value="{{ form[4] or '' }}">
                 </div>
                 
                 {% for field in template.fields %}
                 <div class="form-group">
                     <label>{{ field|replace('_', ' ')|title }}</label>
-                    {% if field in ['description', 'notes', 'action_items', 'accomplishments', 'blockers', 'highlights', 'challenges', 'expenses', 'items', 'comments', 'goals', 'objectives', 'rationale', 'mitigation', 'improvements', 'what_went_well'] %}
-                    <textarea name="{{ field }}" rows="4" placeholder="Enter {{ field|replace('_', ' ') }}..."></textarea>
+                    {% if field in ['description', 'notes', 'action_items', 'accomplishments', 'blockers', 'highlights', 'challenges', 'expenses', 'items', 'comments', 'goals', 'objectives', 'rationale', 'mitigation'] %}
+                    <textarea name="{{ field }}" rows="4">{{ fields.get(field, '') }}</textarea>
                     {% else %}
-                    <input type="text" name="{{ field }}" placeholder="Enter {{ field|replace('_', ' ') }}...">
+                    <input type="text" name="{{ field }}" value="{{ fields.get(field, '') }}">
                     {% endif %}
                 </div>
                 {% endfor %}
                 
                 <div style="margin-top: 30px;">
-                    <button type="submit" class="btn btn-primary">Save Form</button>
-                    <a href="/" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <a href="/form/{{ form[0] }}" class="btn btn-secondary">Cancel</a>
                 </div>
             </form>
         </div>
