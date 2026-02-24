@@ -1,16 +1,29 @@
 # Template Business Manager
 
-**Professional document templates for small businesses.**
+**Professional document templates + web app for small businesses.**
 
 ---
 
-## Overview
+## 🚀 Quick Start
 
-A comprehensive collection of business templates covering SOPs, HR, Project Management, Finance, Legal, Marketing, and more. Includes a web application for creating, storing, and managing filled templates.
+### Run the Web App
+
+```bash
+# Navigate to webapp folder
+cd template-business/webapp
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the app
+python app.py
+```
+
+Then open **http://localhost:5000**
 
 ---
 
-## Features
+## What's Included
 
 ### 50+ Templates
 
@@ -29,81 +42,166 @@ A comprehensive collection of business templates covering SOPs, HR, Project Mana
 | **Construction** | Project Checklist |
 | **Retail** | Store Opening Checklist |
 
-### Web Application
+### Web App Features
 
-- ✅ Create forms from 50+ templates
-- ✅ Save to SQLite database
-- ✅ Search previous forms
-- ✅ Export to Markdown, Word (DOCX), PDF
-- ✅ Edit existing forms
-- ✅ Delete forms
+- ✅ User accounts & login
+- ✅ Company management
+- ✅ Create/Edit/Delete templates
+- ✅ Fill forms from templates
+- ✅ Save forms to database
+- ✅ Search & filter forms
+- ✅ Duplicate forms
+- ✅ Version history
+- ✅ Export: Markdown, Word, PDF, JSON
 - ✅ Status tracking (draft/complete)
-- ✅ REST API
 
 ---
 
-## Quick Start
+## Directory Structure
 
-```bash
-# Clone the repo
-git clone https://github.com/clawmango0/template-business.git
-cd template-business
-
-# Set up web app
-cd webapp
-pip install -r requirements.txt
-
-# Run the app
-python app.py
 ```
-
-Then open http://localhost:5000
+template-business/
+├── README.md                    # This file
+├── guides/                       # User guides
+│   ├── sop-user-guide.md
+│   ├── project-user-guide.md
+│   ├── hr-user-guide.md
+│   ├── finance-user-guide.md
+│   └── executive-user-guide.md
+├── webapp/                      # Flask web application
+│   ├── app.py                  # Main application
+│   ├── requirements.txt        # Python dependencies
+│   ├── config.json             # Configuration
+│   └── templates/              # HTML templates
+├── sops/                       # Tier 1 SOPs
+├── project/                    # Project templates
+├── hr/                        # HR templates
+├── finance/                   # Finance templates
+├── executive/                 # Executive templates
+├── legal/                     # Legal templates
+├── marketing/                 # Marketing templates
+├── customer-success/          # CS templates
+├── operations/               # Operations templates
+├── healthcare/               # Healthcare templates
+├── construction/             # Construction templates
+└── retail/                   # Retail templates
+```
 
 ---
 
-## Templates
+## Web App Usage
 
-### Using Templates
+### First Time Setup
 
-Each template uses {{PLACEHOLDERS}} for customization:
+1. Run `python app.py`
+2. Open http://localhost:5000
+3. Click **Register** to create an account
+4. Your company is automatically created
 
+### Creating Forms
+
+1. Go to Dashboard
+2. Click on any template
+3. Fill in the fields
+4. Click Save
+
+### Managing Templates
+
+1. Click **Templates** in the nav
+2. Click **New Template** to add your own
+3. Or click **Edit** on existing templates to customize
+
+### Managing Forms
+
+1. Click **All Forms** to see all your forms
+2. Use filters to search by status or template
+3. Click **View** to see a form
+4. Click **Edit** to modify
+5. Click **Copy** to duplicate
+
+### Exporting
+
+- **Single form:** On form page, click Download Markdown/Word/PDF
+- **All forms:** Click "Export All" for JSON backup
+
+---
+
+## Template Format
+
+Templates use Markdown with `{{PLACEHOLDERS}}`:
+
+```markdown
+# Invoice
+
+**Company:** {{COMPANY_NAME}}
+**Date:** {{DATE}}
+
+## Bill To
+{{CLIENT_NAME}}
 ```
-{{COMPANY_NAME}} → Your Company
-{{DATE}} → 2024-01-15
-{{AUTHOR}} → Document Owner
-```
 
-### Converting Formats
+### Supported Placeholders
+
+| Placeholder | Example |
+|-------------|---------|
+| `{{COMPANY_NAME}}` | Acme Corp |
+| `{{DATE}}` | 2024-01-15 |
+| `{{EMPLOYEE_NAME}}` | John Smith |
+| `{{AMOUNT}}` | 1000 |
+| Any field name | Custom field |
+
+---
+
+## Converting Templates
+
+### Using Pandoc (Command Line)
 
 ```bash
-# Convert markdown to Word
+# Markdown to Word
 pandoc template.md -o template.docx
 
-# Convert markdown to PDF
+# Markdown to PDF
 pandoc template.md -o template.pdf
+
+# Markdown to HTML
+pandoc template.md -o template.html
 ```
 
----
+### Using the Web App
 
-## Web App Features
-
-### Create Forms
-1. Select template from home page
-2. Fill in fields
-3. Save to database
-
-### Manage Forms
-- View all forms
-- Search by title, company, content
-- Edit existing forms
-- Delete forms
-
-### Export
+The web app automatically converts to:
 - Markdown (.md)
 - Word (.docx)
 - PDF (via Pandoc)
 
-### API
+---
+
+## Adding Custom Templates
+
+### Option 1: Via Web App
+
+1. Go to `/template/new`
+2. Fill in name, category, fields
+3. Save
+
+### Option 2: Add Manually
+
+1. Create markdown file in appropriate folder
+2. Use `{{FIELD_NAME}}` for placeholders
+3. Add to `app.py` TEMPLATES dictionary
+
+---
+
+## Tech Stack
+
+- **Backend:** Python Flask
+- **Database:** SQLite
+- **Frontend:** HTML/CSS/JavaScript
+- **Conversion:** Pandoc, LibreOffice
+
+---
+
+## API Endpoints
 
 ```bash
 # List all forms
@@ -115,69 +213,41 @@ GET /api/templates
 
 ---
 
-## Directory Structure
+## Troubleshooting
 
-```
-template-business/
-├── README.md
-├── guides/              # User guides
-│   ├── sop-user-guide.md
-│   ├── project-user-guide.md
-│   ├── hr-user-guide.md
-│   ├── finance-user-guide.md
-│   └── executive-user-guide.md
-├── webapp/             # Flask web app
-│   ├── app.py
-│   ├── requirements.txt
-│   └── templates/
-├── sops/               # Tier 1 SOPs
-├── project/
-├── hr/
-├── finance/
-├── executive/
-├── legal/
-├── marketing/
-├── customer-success/
-├── operations/
-├── healthcare/
-├── construction/
-└── retail/
+### "Module not found" errors
+
+```bash
+pip install -r requirements.txt
 ```
 
----
+### Port already in use
 
-## Categories by Tier
+```bash
+python app.py --port 5001
+```
 
-### Tier 1 ($5-10)
-Basic templates with essential fields.
+### PDF export not working
 
-### Tier 2 ($25-50)
-More comprehensive templates with additional sections.
+Install Pandoc:
+```bash
+# Ubuntu/Debian
+sudo apt install pandoc
 
----
+# macOS
+brew install pandoc
 
-## Customization
-
-### Adding Templates
-
-1. Create markdown file in appropriate category folder
-2. Use {{PLACEHOLDER}} syntax for customizable fields
-3. Add template definition to `app.py` TEMPLATES dict
-
-### Extending Web App
-
-- Modify `app.py` to add features
-- Edit templates in `templates/` folder
-- Update database schema in `init_db()`
+# Windows
+# Download from https://pandoc.org/
+```
 
 ---
 
-## Tech Stack
+## Contributing
 
-- **Templates:** Markdown with placeholders
-- **Conversion:** Pandoc, LibreOffice
-- **Web App:** Flask, SQLite
-- **Styling:** Custom CSS
+1. Fork the repo
+2. Add templates to appropriate folder
+3. Submit pull request
 
 ---
 
@@ -187,12 +257,5 @@ MIT License - Use freely for your business.
 
 ---
 
-## Contributing
-
-1. Fork the repo
-2. Add templates
-3. Submit pull request
-
----
-
 **GitHub:** https://github.com/clawmango0/template-business
+**Web App:** http://localhost:5000 (when running)
