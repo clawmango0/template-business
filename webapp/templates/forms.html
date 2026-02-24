@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms - Template Business Manager</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px 0; margin-bottom: 30px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        h1 { font-size: 24px; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 6px; }
+        nav a:hover { background: rgba(255,255,255,0.2); }
+        
+        .card { background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .card h2 { color: #333; margin-bottom: 20px; font-size: 20px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .filters { display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; }
+        .filters select, .filters input { padding: 10px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 14px; }
+        .filters select:focus, .filters input:focus { outline: none; border-color: #667eea; }
+        .filters input { flex: 1; min-width: 200px; }
+        
+        .btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-secondary { background: #e0e0e0; color: #333; }
+        .btn-sm { padding: 6px 12px; font-size: 12px; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #f0f0f0; }
+        th { background: #f8f9fa; font-weight: 600; color: #333; }
+        tr:hover { background: #f8f9fa; }
+        
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .badge.draft { background: #fff3cd; color: #856404; }
+        .badge.complete { background: #d4edda; color: #155724; }
+        
+        .actions { display: flex; gap: 8px; }
+        
+        .flash { padding: 12px; border-radius: 8px; margin-bottom: 20px; }
+        .flash.success { background: #d4edda; color: #155724; }
+        .flash.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📄 All Forms</h1>
+            <nav>
+                <a href="/">Dashboard</a>
+                <a href="/templates">Templates</a>
+                <a href="/">New Form</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div class="card">
+            <h2>Forms 
+                <a href="/export/all" class="btn btn-secondary btn-sm">Export All</a>
+            </h2>
+            
+            <form method="GET" class="filters">
+                <input type="text" name="q" placeholder="Search forms..." value="{{ request.args.get('q', '') }}">
+                <select name="status">
+                    <option value="">All Status</option>
+                    <option value="draft" {% if status_filter == 'draft' %}selected{% endif %}>Draft</option>
+                    <option value="complete" {% if status_filter == 'complete' %}selected{% endif %}>Complete</option>
+                </select>
+                <select name="template">
+                    <option value="">All Templates</option>
+                    {% for t in templates %}
+                    <option value="{{ t.id }}">{{ t.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a href="/forms" class="btn btn-secondary">Clear</a>
+            </form>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Template</th>
+                        <th>Company</th>
+                        <th>Status</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for form in forms %}
+                    <tr>
+                        <td><a href="/form/{{ form.id }}">{{ form.title }}</a></td>
+                        <td>{{ form.template_name or 'Unknown' }}</td>
+                        <td>{{ form.company_name or '-' }}</td>
+                        <td><span class="badge {{ form.status }}">{{ form.status }}</span></td>
+                        <td>{{ form.created_at[:10] }}</td>
+                        <td class="actions">
+                            <a href="/form/{{ form.id }}" class="btn btn-secondary btn-sm">View</a>
+                            <a href="/form/{{ form.id }}/edit" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="/form/duplicate/{{ form.id }}" class="btn btn-primary btn-sm">Copy</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align: center; color: #888; padding: 40px;">
+                            No forms found. <a href="/">Create your first form</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

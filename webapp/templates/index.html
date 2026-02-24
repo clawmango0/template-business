@@ -12,7 +12,7 @@
         header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px 0; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         h1 { font-size: 28px; font-weight: 600; }
-        nav a { color: white; text-decoration: none; margin-left: 25px; padding: 8px 16px; border-radius: 6px; transition: background 0.3s; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 10px 18px; border-radius: 8px; transition: background 0.3s; }
         nav a:hover { background: rgba(255,255,255,0.2); }
         
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
@@ -21,7 +21,7 @@
         .stat-card .value { font-size: 32px; font-weight: 700; color: #667eea; }
         
         .card { background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-        .card h2 { color: #333; margin-bottom: 20px; font-size: 20px; }
+        .card h2 { color: #333; margin-bottom: 20px; font-size: 20px; display: flex; justify-content: space-between; align-items: center; }
         
         .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
         .category-section { margin-bottom: 30px; }
@@ -46,12 +46,15 @@
         .search-box input { flex: 1; padding: 14px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; }
         .search-box input:focus { outline: none; border-color: #667eea; }
         .search-box button { padding: 14px 28px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; }
-        .search-box button:hover { background: #5a6fd6; }
         
         .flash { padding: 15px; border-radius: 8px; margin-bottom: 20px; }
         .flash.success { background: #d4edda; color: #155724; }
         .flash.error { background: #f8d7da; color: #721c24; }
-        .flash.warning { background: #fff3cd; color: #856404; }
+        
+        .btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-secondary { background: #e0e0e0; color: #333; }
+        
+        .quick-links { display: flex; gap: 15px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -59,8 +62,10 @@
         <div class="container">
             <h1>📋 Template Business Manager</h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="/search">Search</a>
+                <a href="/">Dashboard</a>
+                <a href="/templates">Templates</a>
+                <a href="/forms">All Forms</a>
+                <a href="/login">Login</a>
             </nav>
         </div>
     </header>
@@ -74,6 +79,12 @@
             {% endif %}
         {% endwith %}
         
+        <div class="quick-links">
+            <a href="/templates" class="btn btn-secondary">Manage Templates</a>
+            <a href="/forms" class="btn btn-secondary">View All Forms</a>
+            <a href="/export/all" class="btn btn-secondary">Export All Data</a>
+        </div>
+        
         <div class="stats">
             <div class="stat-card">
                 <h3>Total Forms</h3>
@@ -81,7 +92,7 @@
             </div>
             <div class="stat-card">
                 <h3>Templates</h3>
-                <div class="value">{{ templates|length }}</div>
+                <div class="value">{{ total_templates }}</div>
             </div>
             <div class="stat-card">
                 <h3>Categories</h3>
@@ -100,9 +111,9 @@
                 <h3 class="category-title">{{ category }}</h3>
                 <div class="category-grid">
                     {% for t in templates_list %}
-                    <a href="/template/{{ t.type }}" class="template-btn" data-name="{{ t.name.lower() }}">
+                    <a href="/form/new/{{ t.type }}" class="template-btn" data-name="{{ t.name.lower() }}">
                         <div class="name">{{ t.name }}</div>
-                        <div class="desc">{{ templates[t.type].fields|length }} fields</div>
+                        <div class="desc">{{ templates[t.type].fields|length if t.type in templates }} fields</div>
                     </a>
                     {% endfor %}
                 </div>
@@ -112,17 +123,16 @@
         
         {% if recent_forms %}
         <div class="card">
-            <h2>Recent Forms</h2>
+            <h2>Recent Forms <a href="/forms" class="btn btn-secondary">View All</a></h2>
             <ul class="form-list">
                 {% for form in recent_forms %}
                 <li>
-                    <a href="/form/{{ form[0] }}">
-                        <div class="title">{{ form[2] }}</div>
+                    <a href="/form/{{ form.id }}">
+                        <div class="title">{{ form.title }}</div>
                         <div class="meta">
-                            {{ templates[form[1]]['name'] if form[1] in templates else form[1] }} | 
-                            {{ form[3] or 'No company' }} | 
-                            {{ form[4][:10] }}
-                            <span class="badge {{ form[5] }}">{{ form[5] }}</span>
+                            {{ form.template_name or 'Unknown template' }} | 
+                            {{ form.created_at[:10] }}
+                            <span class="badge {{ form.status }}">{{ form.status }}</span>
                         </div>
                     </a>
                 </li>

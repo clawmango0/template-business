@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Templates - Template Business Manager</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px 0; margin-bottom: 30px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        h1 { font-size: 24px; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; padding: 8px 16px; border-radius: 6px; }
+        nav a:hover { background: rgba(255,255,255,0.2); }
+        
+        .card { background: white; border-radius: 12px; padding: 25px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .card h2 { color: #333; margin-bottom: 20px; font-size: 20px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-secondary { background: #e0e0e0; color: #333; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-sm { padding: 6px 12px; font-size: 12px; }
+        
+        .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+        .template-card { border: 2px solid #e0e0e0; border-radius: 10px; padding: 20px; transition: all 0.3s; }
+        .template-card:hover { border-color: #667eea; transform: translateY(-2px); }
+        .template-card h3 { color: #333; margin-bottom: 8px; }
+        .template-card .category { display: inline-block; background: #667eea; color: white; padding: 4px 12px; border-radius: 20px; font-size: 12px; margin-bottom: 10px; }
+        .template-card .fields { font-size: 13px; color: #888; margin: 10px 0; }
+        .template-card .actions { margin-top: 15px; display: flex; gap: 8px; }
+        
+        .category-section { margin-bottom: 30px; }
+        .category-title { color: #667eea; font-size: 18px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #667eea; }
+        
+        .flash { padding: 12px; border-radius: 8px; margin-bottom: 20px; }
+        .flash.success { background: #d4edda; color: #155724; }
+        .flash.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📝 Template Management</h1>
+            <nav>
+                <a href="/">Dashboard</a>
+                <a href="/forms">Forms</a>
+                <a href="/template/new">New Template</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div class="card">
+            <h2>All Templates <a href="/template/new" class="btn btn-primary">+ New Template</a></h2>
+            
+            {% for category, templates_list in categories.items() %}
+            <div class="category-section">
+                <h3 class="category-title">{{ category }}</h3>
+                <div class="template-grid">
+                    {% for t in templates_list %}
+                    <div class="template-card">
+                        <span class="category">{{ category }}</span>
+                        <h3>{{ t.name }}</h3>
+                        <p class="fields">Fields: {{ templates[t.type].fields|length if t.type in templates }}</p>
+                        <div class="actions">
+                            <a href="/template/{{ t.type }}/edit" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="/form/new/{{ t.type }}" class="btn btn-primary btn-sm">Use</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

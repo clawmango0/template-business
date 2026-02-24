@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Template - Template Business Manager</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px 0; margin-bottom: 30px; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        h1 { font-size: 24px; }
+        nav a { color: white; text-decoration: none; }
+        
+        .card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; }
+        .form-group input, .form-group textarea, .form-group select { 
+            width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 15px; 
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: #667eea; }
+        .form-group .hint { font-size: 13px; color: #888; margin-top: 6px; }
+        
+        .btn { padding: 14px 28px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #667eea; color: white; }
+        .btn-secondary { background: #e0e0e0; color: #333; margin-left: 10px; }
+        
+        .flash { padding: 12px; border-radius: 8px; margin-bottom: 20px; }
+        .flash.success { background: #d4edda; color: #155724; }
+        .flash.error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>➕ Create New Template</h1>
+            <nav><a href="/templates">← Back</a></nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <form method="POST">
+                <div class="form-group">
+                    <label>Template Name *</label>
+                    <input type="text" name="name" required placeholder="e.g., Employee Onboarding SOP">
+                </div>
+                
+                <div class="form-group">
+                    <label>Category *</label>
+                    <select name="category" required>
+                        <option value="SOPs">SOPs</option>
+                        <option value="HR">HR</option>
+                        <option value="Project">Project Management</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Executive">Executive</option>
+                        <option value="Legal">Legal</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Operations">Operations</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Customer Success">Customer Success</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea name="description" rows="3" placeholder="Brief description of this template"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Fields * (comma-separated)</label>
+                    <input type="text" name="fields" required placeholder="company_name, employee_name, department, start_date">
+                    <p class="hint">Separate each field name with a comma. Use underscores for spaces.</p>
+                </div>
+                
+                <div class="form-group">
+                    <label>Tier</label>
+                    <select name="tier">
+                        <option value="tier1">Tier 1 ($5-10)</option>
+                        <option value="tier2">Tier 2 ($25-50)</option>
+                        <option value="tier3">Tier 3 ($75-100)</option>
+                        <option value="tier4">Tier 4 ($150+)</option>
+                    </select>
+                </div>
+                
+                <div style="margin-top: 30px;">
+                    <button type="submit" class="btn btn-primary">Create Template</button>
+                    <a href="/templates" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
