@@ -1,68 +1,78 @@
 # Job Description Template
 
-**Position:** {{JOB_TITLE}}
-**Department:** {{DEPARTMENT}}
-**Location:** [Remote/Hybrid/On-site]
-**Employment Type:** [Full-time/Part-time/Contract]
-**Reports To:** {{MANAGER_TITLE}}
-**Date:** {{DATE}}
+**Category:** Human Resources
+**Tier:** Tier 1 (Basic)
+**Last Updated:** {{DATE}}
+**Version:** 1.0
+
+---
+
+## Quick Info
+
+| Field | Value |
+|-------|-------|
+| Company | {{COMPANY_NAME}} |
+| Position | {{JOB_TITLE}} |
+| Department | {{DEPARTMENT}} |
+| Location | {{REMOTE | HYBRID | ON-SITE}} |
+| Employment Type | {{FULL-TIME | PART-TIME | CONTRACT}} |
+| Reports To | {{MANAGER_TITLE}} |
+| Document ID | JD-{{DEPT}}-{{###}} |
 
 ---
 
 ## About {{COMPANY_NAME}}
 
-[2-3 sentences about company mission/culture]
+{{COMPANY_DESCRIPTION: 2-3 sentences about company mission, culture, and values}}
 
 ---
 
 ## Position Overview
 
-[Brief summary of the role and its purpose]
+{{POSITION_OVERVIEW: Brief summary of the role, its purpose, and why it matters}}
 
 ---
 
 ## Responsibilities
 
-### Core Duties
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+### Primary Duties
+- [ ] {{PRIMARY_DUTY_1}}
+- [ ] {{PRIMARY_DUTY_2}}
+- [ ] {{PRIMARY_DUTY_3}}
+- [ ] {{PRIMARY_DUTY_4}}
+- [ ] {{PRIMARY_DUTY_5}}
 
 ### Daily Tasks
-- [ ]
-- [ ]
+- [ ] {{DAILY_TASK_1}}
+- [ ] {{DAILY_TASK_2}}
+- [ ] {{DAILY_TASK_3}}
 
 ### Strategic Initiatives
-- [ ]
-- [ ]
+- [ ] {{STRATEGIC_INITIATIVE_1}}
+- [ ] {{STRATEGIC_INITIATIVE_2}}
 
 ---
 
-## Required Qualifications
+## Qualifications
 
-### Education
-- [Degree] in [Field] or related field
+### Required
+- {{REQUIRED_QUAL_1}}
+- {{REQUIRED_QUAL_2}}
+- {{REQUIRED_QUAL_3}}
 
-### Experience
-- [X] years of related experience
-- Experience with [tools/methods]
+### Preferred
+- {{PREFERRED_QUAL_1}}
+- {{PREFERRED_QUAL_2}}
 
-### Skills
+---
+
+## Skills & Competencies
+
 | Skill | Level Required |
 |-------|----------------|
-| | Basic/Intermediate/Expert |
-| | Basic/Intermediate/Expert |
-| | Basic/Intermediate/Expert |
-
----
-
-## Preferred Qualifications
-
-- [ ]
-- [ ]
-- [Certifications]
+| {{SKILL_1}} | {{BEGINNER | INTERMEDIATE | EXPERT}} |
+| {{SKILL_2}} | {{BEGINNER | INTERMEDIATE | EXPERT}} |
+| {{SKILL_3}} | {{BEGINNER | INTERMEDIATE | EXPERT}} |
 
 ---
 
@@ -70,29 +80,17 @@
 
 | Component | Details |
 |-----------|---------|
-| Salary Range | $ - $ |
-| Bonus | % |
-| Equity | [If applicable] |
-| Benefits | Full package |
-| PTO | [Days] |
+| Salary Range | ${{SALARY_MIN}} - ${{SALARY_MAX}} |
+| Bonus | {{BONUS_%}}% |
+| Equity | {{EQUITY_OPTION}} |
+| Benefits | {{HEALTH | DENTAL | VISION | 401K}} |
 
 ---
 
 ## How to Apply
 
-**To apply:** [Email / Link]
-
-**Include:**
-- Resume
-- Cover letter
-- Portfolio/work samples [if applicable]
+{{APPLICATION_INSTRUCTIONS: Include application URL, email, or process}}
 
 ---
 
-## Equal Opportunity
-
-{{COMPANY_NAME}} is an equal opportunity employer. We evaluate qualified applicants without regard to race, color, religion, sex, national origin, disability, veteran status, and other protected characteristics.
-
----
-
-*Job Description - {{COMPANY_NAME}}*
+*Template: Job-Description-Template | Use {{PLACEHOLDER}} syntax to customize*

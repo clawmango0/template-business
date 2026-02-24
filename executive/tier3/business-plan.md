@@ -1,13 +1,33 @@
 # Business Plan Template
 
+**Category:** Executive
+**Tier:** Tier 3 (Premium)
+**Last Updated:** {{DATE}}
+**Version:** 1.0
+
+---
+
+## Quick Info
+
+| Field | Value |
+|-------|-------|
+| Company | {{COMPANY_NAME}} |
+| Author | {{AUTHOR}} |
+| Document ID | BP-{{YYYY}}-{{###}} |
+| Confidentiality | {{PUBLIC | INTERNAL | CONFIDENTIAL}} |
+
+---
+
 ## Executive Summary
 
-**Company Name:** {{COMPANY_NAME}}
-**Mission Statement:** {{MISSION}}
-**Vision:** {{VISION}}
+### Mission Statement
+{{MISSION_STATEMENT}}
+
+### Vision
+{{VISION}}
 
 ### Business Overview
-{{OVERVIEW}}
+{{BUSINESS_OVERVIEW}}
 
 ### Products/Services
 {{PRODUCTS_SERVICES}}
@@ -16,23 +36,28 @@
 {{TARGET_MARKET}}
 
 ### Financial Highlights
-- **Start-up Cost:** ${{STARTUP_COST}}
-- **Year 1 Revenue:** ${{REVENUE_Y1}}
-- **Year 2 Revenue:** ${{REVENUE_Y2}}
-- **Year 3 Revenue:** ${{REVENUE_Y3}}
-- **Break-even:** {{BREAKEVEN}}
+| Metric | Value |
+|--------|-------|
+| Start-up Cost | ${{STARTUP_COST}} |
+| Year 1 Revenue | ${{REVENUE_Y1}} |
+| Year 2 Revenue | ${{REVENUE_Y2}} |
+| Year 3 Revenue | ${{REVENUE_Y3}} |
+| Break-even | {{BREAKEVEN_MONTH}} |
 
 ---
 
 ## Company Description
 
 ### Business Structure
-- **Legal Structure:** {{LEGAL_STRUCTURE}} (LLC, Corporation, Sole Prop, etc.)
-- **Location:** {{LOCATION}}
-- **Founded:** {{DATE_FOUNDED}}
+| Factor | Value |
+|--------|-------|
+| Legal Structure | {{LLC | CORPORATION | SOLE_PROP | PARTNERSHIP}} |
+| Location | {{LOCATION}} |
+| Founded | {{DATE_FOUNDED}} |
+| Employees | {{EMPLOYEE_COUNT}} |
 
 ### Problem We Solve
-{{PROBLEM}}
+{{PROBLEM_STATEMENT}}
 
 ### Solution
 {{SOLUTION}}
@@ -48,8 +73,13 @@
 {{INDUSTRY_OVERVIEW}}
 
 ### Target Market
-**Market Size:** {{MARKET_SIZE}}
-**Growth Rate:** {{GROWTH_RATE}}
+| Metric | Value |
+|--------|-------|
+| Market Size | {{MARKET_SIZE}} |
+| Growth Rate | {{GROWTH_RATE}}% |
+| TAM | ${{TAM}} |
+| SAM | ${{SAM}} |
+| SOM | ${{SOM}} |
 
 ### Customer Profile
 {{CUSTOMER_PROFILE}}
@@ -65,9 +95,9 @@
 
 | Product | Description | Price | Margin |
 |---------|-------------|-------|--------|
-| {{PRODUCT_1}} | {{DESC_1}} | {{PRICE_1}} | {{MARGIN_1}} |
-| {{PRODUCT_2}} | {{DESC_2}} | {{PRICE_2}} | {{MARGIN_2}} |
-| {{PRODUCT_3}} | {{DESC_3}} | {{PRICE_3}} | {{MARGIN_3}} |
+| {{PRODUCT_1}} | {{DESC_1}} | ${{PRICE_1}} | {{MARGIN_1}}% |
+| {{PRODUCT_2}} | {{DESC_2}} | ${{PRICE_2}} | {{MARGIN_2}}% |
+| {{PRODUCT_3}} | {{DESC_3}} | ${{PRICE_3}} | {{MARGIN_3}}% |
 
 ### Competitive Advantages
 1. {{ADVANTAGE_1}}
@@ -79,9 +109,11 @@
 ## Marketing & Sales Strategy
 
 ### Marketing Channels
-1. {{CHANNEL_1}} - {{PURPOSE_1}}
-2. {{CHANNEL_2}} - {{PURPOSE_2}}
-3. {{CHANNEL_3}} - {{PURPOSE_3}}
+| Channel | Purpose | Budget |
+|---------|---------|--------|
+| {{CHANNEL_1}} | {{PURPOSE_1}} | ${{BUDGET_1}} |
+| {{CHANNEL_2}} | {{PURPOSE_2}} | ${{BUDGET_2}} |
+| {{CHANNEL_3}} | {{PURPOSE_3}} | ${{BUDGET_3}} |
 
 ### Sales Process
 {{SALES_PROCESS}}
@@ -89,11 +121,12 @@
 ### Pricing Strategy
 {{PRICING_STRATEGY}}
 
-### Customer Acquisition Cost (CAC)
-{{CAC}}
-
-### Lifetime Value (LTV)
-{{LTV}}
+### Customer Metrics
+| Metric | Value |
+|--------|-------|
+| CAC | ${{CAC}} |
+| LTV | ${{LTV}} |
+| LTV:CAC Ratio | {{RATIO}} |
 
 ---
 
@@ -150,13 +183,6 @@
 | Expenses | ${{EXP_Y1}} | ${{EXP_Y2}} | ${{EXP_Y3}} |
 | Net Income | ${{NET_Y1}} | ${{NET_Y2}} | ${{NET_Y3}} |
 
-### Cash Flow
-| Category | Year 1 | Year 2 | Year 3 |
-|----------|--------|--------|--------|
-| Operating | ${{CF_OPS}} | ${{CF_OPS}} | ${{CF_OPS}} |
-| Investing | ${{CF_INV}} | ${{CF_INV}} | ${{CF_INV}} |
-| Financing | ${{CF_FIN}} | ${{CF_FIN}} | ${{CF_FIN}} |
-
 ---
 
 ## Funding Request
@@ -169,7 +195,7 @@
 | {{PURPOSE_3}} | ${{AMOUNT_3}} | {{PCT_3}} |
 
 ### Funding Goal
-${{FUNDING_GOAL}}
+**${{FUNDING_GOAL}}**
 
 ---
 
@@ -177,8 +203,8 @@ ${{FUNDING_GOAL}}
 
 | Risk | Likelihood | Impact | Mitigation |
 |------|------------|--------|------------|
-| {{RISK_1}} | {{LIKE}} | {{IMPACT}} | {{MITIGATION}} |
-| {{RISK_2}} | {{LIKE}} | {{IMPACT}} | {{MITIGATION}} |
+| {{RISK_1}} | {{LOW | MEDIUM | HIGH}} | {{LOW | MEDIUM | HIGH}} | {{MITIGATION_1}} |
+| {{RISK_2}} | {{LOW | MEDIUM | HIGH}} | {{LOW | MEDIUM | HIGH}} | {{MITIGATION_2}} |
 
 ---
 
@@ -187,9 +213,6 @@ ${{FUNDING_GOAL}}
 ### Appendix A: {{TITLE}}
 {{CONTENT}}
 
-### Appendix B: {{TITLE}}
-{{CONTENT}}
-
 ---
 
-*Template: Use {{PLACEHOLDER}} syntax to customize*
+*Template: Business-Plan-Template | Use {{PLACEHOLDER}} syntax to customize*

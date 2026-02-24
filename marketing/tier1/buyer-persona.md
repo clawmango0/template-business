@@ -1,33 +1,48 @@
 # Buyer Persona Template
 
-## Persona Profile
+**Category:** Marketing
+**Tier:** Tier 1 (Basic)
+**Last Updated:** {{DATE}}
+**Version:** 1.0
 
-**Name:** {{PERSONA_NAME}}
-**Photo:** [Insert stock photo]
-**Role:** {{JOB_TITLE}}
-**Company Size:** {{COMPANY_SIZE}}
+---
+
+## Quick Info
+
+| Field | Value |
+|-------|-------|
+| Company | {{COMPANY_NAME}} |
+| Persona Name | {{PERSONA_NAME}} |
+| Author | {{MARKETING_AUTHOR}} |
+| Document ID | PERSONA-{{###}} |
 
 ---
 
 ## Demographics
 
-- **Age:** {{AGE}}
-- **Gender:** {{GENDER}}
-- **Income Level:** {{INCOME}}
-- **Education:** {{EDUCATION}}
-- **Location:** {{LOCATION}}
-- **Family Status:** {{FAMILY_STATUS}}
+| Factor | Value |
+|--------|-------|
+| Name | {{PERSONA_NAME}} |
+| Age Range | {{AGE_MIN}}-{{AGE_MAX}} |
+| Gender | {{GENDER}} |
+| Income Level | {{INCOME_LEVEL}} |
+| Education | {{EDUCATION}} |
+| Location | {{LOCATION}} |
+| Family Status | {{FAMILY_STATUS}} |
+| Occupation | {{OCCUPATION}} |
 
 ---
 
 ## Professional Profile
 
-- **Job Title:** {{JOB_TITLE}}
-- **Industry:** {{INDUSTRY}}
-- **Years of Experience:** {{YEARS_EXPERIENCE}}
-- **Company Type:** {{COMPANY_TYPE}}
-- **Team Size:** {{TEAM_SIZE}}
-- **Annual Budget:** {{ANNUAL_BUDGET}}
+| Factor | Value |
+|--------|-------|
+| Job Title | {{JOB_TITLE}} |
+| Industry | {{INDUSTRY}} |
+| Company Size | {{COMPANY_SIZE}} |
+| Years Experience | {{YEARS_EXPERIENCE}} |
+| Team Size | {{TEAM_SIZE}} |
+| Annual Budget | ${{ANNUAL_BUDGET}} |
 
 ---
 
@@ -41,6 +56,7 @@
 ### What Drives Them
 - {{MOTIVATION_1}}
 - {{MOTIVATION_2}}
+- {{MOTIVATION_3}}
 
 ---
 
@@ -54,39 +70,27 @@
 ### Frustrations
 - {{FRUSTRATION_1}}
 - {{FRUSTRATION_2}}
+- {{FRUSTRATION_3}}
 
 ---
 
 ## Buying Behavior
 
-### How They Research
-- {{RESEARCH_METHOD_1}}
-- {{RESEARCH_METHOD_2}}
-
-### Decision Factors
-- {{DECISION_FACTOR_1}}
-- {{DECISION_FACTOR_2}}
-
-### Purchase Timeline
-{{PURCHASE_TIMELINE}}
-
-### Budget Authority
-{{BUDGET_AUTHORITY}}
-
----
-
-## Communication Preferences
+| Factor | Details |
+|--------|---------|
+| Research Methods | {{RESEARCH_METHODS}} |
+| Decision Factors | {{DECISION_FACTORS}} |
+| Purchase Timeline | {{PURCHASE_TIMELINE}} |
+| Budget Authority | {{BUDGET_AUTHORITY}} |
 
 ### Preferred Channels
 - {{CHANNEL_1}}
 - {{CHANNEL_2}}
+- {{CHANNEL_3}}
 
-### Content Types
+### Content Preferences
 - {{CONTENT_TYPE_1}}
 - {{CONTENT_TYPE_2}}
-
-### Email Style
-{{EMAIL_STYLE}}
 
 ---
 
@@ -105,8 +109,8 @@
 1. **Tailor messaging** to their specific pain points
 2. **Choose channels** they actually use
 3. **Create content** that addresses their goals
-4. **Shape sales approach** based on their buying behavior
+4. **Shape sales approach** based on buying behavior
 
 ---
 
-*Template: Use {{PLACEHOLDER}} syntax to customize*
+*Template: Buyer-Persona-Template | Use {{PLACEHOLDER}} syntax to customize*
