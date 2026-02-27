@@ -6,6 +6,32 @@ This guide shows how to use AI tools (Grok, ChatGPT, Claude, Copilot) to enhance
 
 ---
 
+## ⚡ Important: Company Context First!
+
+**Before using any AI prompt, create your company details file:**
+
+1. Copy `COMPANY_DETAILS_TEMPLATE.md` → rename to `COMPANY.md`
+2. Fill in your specifics (takes ~15 minutes)
+3. Include relevant sections in every AI prompt
+
+### Example:
+```
+Based on our company:
+- Industry: Construction
+- Location: Fort Worth, TX  
+- Size: 15 employees
+- Revenue: $2M
+- Culture: Family-oriented, casual
+
+Please create [DOCUMENT]...
+```
+
+**This makes all AI output personalized to YOUR business!**
+
+See `COMPANY_DETAILS_GUIDE.md` for full instructions.
+
+---
+
 ## Why Use AI with These Templates?
 
 | Benefit | Description |
@@ -24,6 +50,12 @@ This guide shows how to use AI tools (Grok, ChatGPT, Claude, Copilot) to enhance
 
 **AI Prompt to use:**
 ```
+Based on our company:
+- Industry: [YOUR INDUSTRY]
+- Company Size: [NUMBER] employees
+- Location: [CITY, STATE]
+- Tools we use: [LIST TOOLS]
+
 You are an operations expert. Create a detailed step-by-step SOP for [TOPIC]. 
 Include:
 - Objective (why this matters)
@@ -59,7 +91,14 @@ Make it clear enough for a new employee to follow without additional guidance.
 
 **AI Prompt:**
 ```
-Create a professional job description for [JOB TITLE] at [COMPANY TYPE].
+Based on our company:
+- Industry: [YOUR INDUSTRY]
+- Company Size: [NUMBER] employees
+- Location: [CITY, STATE] - affects employment law
+- Culture: [CASUAL/FORMAL/etc.]
+- Benefits: [LIST BENEFITS]
+
+Create a professional job description for [JOB TITLE].
 Include:
 - Position overview (2-3 sentences)
 - Key responsibilities (5-7 bullet points)
@@ -100,6 +139,11 @@ Add a brief section explaining WHY this policy matters to employees.
 
 **AI Prompt:**
 ```
+Based on our company:
+- Business Type: [SERVICE/PRODUCT/etc.]
+- Location: [CITY, STATE]
+- Payment Terms: [NET 15/30/60]
+
 Generate a professional invoice template for [BUSINESS TYPE].
 Include:
 - Professional header with logo placement
@@ -183,9 +227,16 @@ Include:
 
 **AI Prompt:**
 ```
+Based on our company:
+- Industry: [INDUSTRY]
+- Revenue Stage: $[AMOUNT] annually
+- Current Goals: [LIST GOALS]
+- Key Challenges: [LIST CHALLENGES]
+
 You are an executive communications expert. Help me write a compelling executive brief.
 
 Context:
+- Purpose: [BOARD UPDATE / INVESTOR UPDATE / STRATEGIC PLAN]
 - Purpose: [BOARD UPDATE / INVESTOR UPDATE / STRATEGIC PLAN]
 - Audience: [BOARD / INVESTORS / EXECUTIVE TEAM]
 - Key message: [MAIN THESIS]

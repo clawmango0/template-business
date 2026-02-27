@@ -4,6 +4,20 @@ Copy these prompts into Grok, ChatGPT, Claude, or Copilot
 
 ---
 
+## ⚡ Always Include Company Context
+
+```
+Based on our company:
+- Industry: [YOUR INDUSTRY]
+- Size: [NUMBER] employees  
+- Location: [CITY, STATE]
+- Revenue: $[AMOUNT]
+
+[YOUR REQUEST]
+```
+
+---
+
 ## 📋 SOPs
 ```
 "Create a step-by-step SOP for [TOPIC]. Include objective, prerequisites, numbered steps, checkpoints, and troubleshooting tips. Context: [INDUSTRY], team size: [SIZE]."
