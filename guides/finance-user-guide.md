@@ -164,3 +164,7 @@ Finance templates help manage money, track assets, and maintain fiscal responsib
 ---
 
 *For finance support: Contact your Finance team or accountant*
+
+## 🤖 AI Enhancement
+
+Need help? See `AGENTIC_TEMPLATE_GUIDE.md` for AI prompts. Copy into Grok, ChatGPT, Claude, or Copilot!

@@ -186,3 +186,32 @@ Search for these placeholders and replace:
 ---
 
 *Last Updated: February 2026*
+
+---
+
+## 🤖 AI-Powered Template Enhancement
+
+**New!** Use AI tools to supercharge your templates. See `guides/AGENTIC_TEMPLATE_GUIDE.md` for:
+
+- Copy-paste AI prompts for every template type
+- How to use Grok, ChatGPT, Claude, Copilot
+- Examples for SOPs, HR, Finance, Project, Legal, Executive
+
+### Quick Examples:
+
+**Need to write a job description?**
+```markdown
+"Create a professional job description for Marketing Manager at a tech startup..."
+```
+
+**Creating an SOP?**
+```markdown
+"Create a detailed SOP for employee onboarding that includes..."
+```
+
+**Executive brief?**
+```markdown
+"Write an executive brief for our board update. Key message is..."
+```
+
+See the full guide for 15+ ready-to-use prompts!

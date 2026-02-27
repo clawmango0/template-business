@@ -169,3 +169,7 @@ Project management templates help teams plan, track, and deliver projects effect
 ---
 
 *For help: Contact your Project Management Office or Operations team*
+
+## 🤖 AI Enhancement
+
+Need help? See `AGENTIC_TEMPLATE_GUIDE.md` for AI prompts. Copy into Grok, ChatGPT, Claude, or Copilot!

@@ -172,3 +172,7 @@ Objective: What we want to achieve (qualitative)
 ---
 
 *For strategy support: Contact your Executive team or Board liaison*
+
+## 🤖 AI Enhancement
+
+Need help? See `AGENTIC_TEMPLATE_GUIDE.md` for AI prompts. Copy into Grok, ChatGPT, Claude, or Copilot!

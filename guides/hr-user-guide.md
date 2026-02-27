@@ -147,3 +147,7 @@ HR templates help standardize people operations - from hiring to performance to 
 ---
 
 *For HR support: Contact your HR team or employment counsel*
+
+## 🤖 AI Enhancement
+
+Need help? See `AGENTIC_TEMPLATE_GUIDE.md` for AI prompts. Copy into Grok, ChatGPT, Claude, or Copilot!

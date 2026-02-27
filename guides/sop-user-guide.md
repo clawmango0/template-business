@@ -160,3 +160,15 @@ Every SOP should include:
 ---
 
 *For support: Contact your Operations or IT team*
+
+---
+
+## 🤖 AI Enhancement
+
+Need help writing procedures? See `AGENTIC_TEMPLATE_GUIDE.md` for AI prompts like:
+
+- "Create a step-by-step SOP for [TOPIC]"
+- "Document the process for [PROCESS]"
+- "Add troubleshooting tips for common issues"
+
+Copy the prompts into ChatGPT, Grok, Claude, or Copilot for instant help!
