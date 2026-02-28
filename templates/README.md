@@ -136,3 +136,41 @@ These templates are starting points and examples. For important legal documents:
 ---
 
 *Last updated: February 2026*
+
+---
+
+## 📝 SAMPLE TEMPLATES
+
+Each category includes **filled-in sample templates** showing how to complete them:
+
+| Category | Sample Documents |
+|----------|-----------------|
+| Pressure Washing | Service Agreement - Complete example |
+| HR | Job Application - Completed form |
+| Operations | Vehicle Inspection - Daily log filled in |
+| Sales | Quote/Proposal - Customer example |
+| Financial | Invoice - Paid invoice example |
+
+### How to Use Samples
+
+1. **Download** the sample for your category
+2. **Replace** the sample data with your info
+3. **Save** as your working document
+4. **Customize** for each customer/job
+
+### Sample Files
+
+- `category/samples/01-*-SAMPLE.md` - Markdown version (editable)
+- Convert to PDF/Word/Google Docs using:
+  - **Markdown → PDF**: pandoc, word, or online converters
+  - **Markdown → Word**: pandoc or copy-paste to Google Docs
+  - **Google Docs**: Upload md file to docs.google.com
+
+### Fillable Forms
+
+For truly fillable forms, use:
+- **Google Forms** - Free, online
+- **Microsoft Forms** - With Office 365
+- **JotForm** - Free tier available
+- **PDF fillable** - Adobe Acrobat or PDFescape
+
