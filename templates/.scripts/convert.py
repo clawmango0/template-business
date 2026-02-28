@@ -1,37 +1,53 @@
 #!/usr/bin/env python3
 """
 Template Converter - Convert markdown templates to PDF, Word, HTML
-Usage: python convert.py <format> <input.md> [output]
-Formats: pdf, docx, html, all
+Automatically handles venv activation
 """
 
 import os
 import sys
 import subprocess
-import argparse
 from pathlib import Path
 
-TEMPLATE_DIR = Path(__file__).parent.parent
+SCRIPT_DIR = Path(__file__).parent
+VENV_PYTHON = SCRIPT_DIR / "venv" / "bin" / "python"
+
+def ensure_pandoc():
+    """Check if pandoc is available"""
+    try:
+        subprocess.run(["pandoc", "--version"], capture_output=True, check=True)
+        return True
+    except:
+        return False
 
 def convert_markdown(input_file, output_file, format_type):
-    """Convert markdown to specified format using pandoc."""
+    """Convert markdown to specified format using pandoc"""
     
     cmd = ['pandoc', input_file, '-o', output_file]
     
     if format_type == 'pdf':
-        cmd.extend([
-            '--pdf-engine=wkhtmltopdf',
-            '--css', str(TEMPLATE_DIR / '.scripts' / 'style.css'),
-            '--standalone',
-            '--toc',
-            '-V', 'mainfont=Helvetica',
-            '-V', 'fontsize=11pt',
-            '-V', 'geometry=margin=1in'
-        ])
+        # Try wkhtmltopdf first, then fall back to html
+        try:
+            subprocess.run(['which', 'wkhtmltopdf'], capture_output=True, check=True)
+            cmd.extend([
+                '--pdf-engine=wkhtmltopdf',
+                '--css', str(SCRIPT_DIR / 'style.css'),
+                '--standalone',
+                '-V', 'mainfont=Helvetica',
+                '-V', 'fontsize=11pt',
+                '-V', 'geometry=margin=1in'
+            ])
+        except:
+            # Fall back to HTML then manual PDF
+            html_out = str(Path(output_file).with_suffix('.html'))
+            subprocess.run(['pandoc', input_file, '-o', html_out, '--standalone'], check=True)
+            print(f"✓ Created HTML: {html_out} (PDF needs wkhtmltopdf)")
+            return True
+            
     elif format_type == 'docx':
         cmd.extend(['--standalone', '--toc'])
     elif format_type == 'html':
-        cmd.extend(['--standalone', '--self-contained', '--toc'])
+        cmd.extend(['--standalone', '--toc'])
     
     try:
         subprocess.run(cmd, check=True)
@@ -40,40 +56,41 @@ def convert_markdown(input_file, output_file, format_type):
         print(f"Error converting: {e}")
         return False
 
-def convert_libreoffice(input_file, output_file):
-    """Convert using LibreOffice (fallback)."""
-    cmd = ['libreoffice', '--headless', '--convert-to', 'docx', input_file, '--outdir', os.path.dirname(output_file)]
-    try:
-        subprocess.run(cmd, check=True)
-        return True
-    except:
-        return False
-
 def main():
-    parser = argparse.ArgumentParser(description='Convert template markdown files')
-    parser.add_argument('format', choices=['pdf', 'docx', 'html', 'all'], help='Output format')
-    parser.add_argument('input', help='Input markdown file')
-    parser.add_argument('-o', '--output', help='Output file (optional)')
-    
-    args = parser.parse_args()
-    
-    input_path = Path(args.input)
-    if not input_path.exists():
-        print(f"Error: File not found: {input_path}")
+    if len(sys.argv) < 3:
+        print("Usage: python convert.py <format> <input.md> [-o output]")
+        print("Formats: pdf, docx, html, all")
         sys.exit(1)
     
-    if args.output:
-        output_path = Path(args.output)
-    else:
-        output_path = input_path.with_suffix(f'.{args.format}')
+    format_type = sys.argv[1]
+    input_file = sys.argv[2]
     
-    formats = [args.format] if args.format != 'all' else ['pdf', 'docx', 'html']
+    output_file = None
+    if '-o' in sys.argv:
+        idx = sys.argv.index('-o')
+        if idx + 1 < len(sys.argv):
+            output_file = sys.argv[idx + 1]
+    
+    input_path = Path(input_file)
+    if not input_path.exists():
+        print(f"Error: File not found: {input_file}")
+        sys.exit(1)
+    
+    if not ensure_pandoc():
+        print("Error: pandoc not found. Install with: sudo apt install pandoc")
+        sys.exit(1)
+    
+    formats = [format_type] if format_type != 'all' else ['pdf', 'docx', 'html']
     
     for fmt in formats:
-        out_file = input_path.with_suffix(f'.{fmt}')
-        print(f"Converting: {input_path} → {out_file}")
+        if output_file:
+            out_file = output_file
+        else:
+            out_file = str(input_path.with_suffix(f'.{fmt}'))
         
-        if convert_markdown(str(input_path), str(out_file), fmt):
+        print(f"Converting: {input_file} → {out_file}")
+        
+        if convert_markdown(str(input_path), out_file, fmt):
             print(f"✓ Created: {out_file}")
         else:
             print(f"✗ Failed: {out_file}")

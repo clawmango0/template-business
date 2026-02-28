@@ -1,110 +1,37 @@
 #!/bin/bash
-# Template Converter - Convert markdown templates to PDF, Word, Google Docs
+# Convenience wrapper for all conversions
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+VENV_PYTHON="$SCRIPT_DIR/venv/bin/python"
 
-TEMPLATE_DIR="$(dirname "$0")/.."
+# Use venv python if available
+PYTHON="$VENV_PYTHON"
+[ ! -f "$PYTHON" ] && PYTHON="python3"
 
-# Colors
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
-
-usage() {
-    echo "Usage: $0 <format> <template-file>"
-    echo ""
-    echo "Formats:"
-    echo "  pdf     - Convert to PDF"
-    echo "  docx    - Convert to Word (.docx)"
-    echo "  all     - Convert to all formats"
-    echo ""
-    echo "Examples:"
-    echo "  $0 pdf pressure-washing/01-service-agreement.md"
-    echo "  $0 docx hr/01-employee-handbook-acknowledgment.md"
-    echo "  $0 all financial/01-invoice.md"
-    exit 1
-}
-
-convert_pdf() {
-    local input="$1"
-    local output="${input%.md}.pdf"
-    
-    echo -e "${YELLOW}Converting to PDF: $input → $output${NC}"
-    
-    pandoc "$input" \
-        -o "$output" \
-        --pdf-engine=wkhtmltopdf \
-        --css="$TEMPLATE_DIR/.scripts/style.css" \
-        --standalone \
-        --toc \
-        --toc-depth=2 \
-        -V mainfont="Helvetica" \
-        -V fontsize=11pt \
-        -V geometry=margin=1in
-    
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✓ PDF created: $output${NC}"
-    else
-        echo -e "${RED}✗ PDF conversion failed${NC}"
-    fi
-}
-
-convert_docx() {
-    local input="$1"
-    local output="${input%.md}.docx"
-    
-    echo -e "${YELLOW}Converting to Word: $input → $output${NC}"
-    
-    pandoc "$input" \
-        -o "$output" \
-        --standalone \
-        --toc \
-        --toc-depth=2 \
-        --reference-doc="$TEMPLATE_DIR/.scripts/template.docx"
-    
-    if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✓ Word doc created: $output${NC}"
-    else
-        # Try without reference doc
-        pandoc "$input" -o "$output" --standalone --toc
-        if [ $? -eq 0 ]; then
-            echo -e "${GREEN}✓ Word doc created: $output${NC}"
-        else
-            echo -e "${RED}✗ Word conversion failed${NC}"
-        fi
-    fi
-}
-
-convert_all() {
-    local input="$1"
-    convert_pdf "$input"
-    convert_docx "$input"
-}
-
-# Main
-if [ $# -lt 2 ]; then
-    usage
-fi
-
-FORMAT="$1"
-INPUT="$2"
-
-if [ ! -f "$INPUT" ]; then
-    echo -e "${RED}Error: File not found: $INPUT${NC}"
-    exit 1
-fi
-
-case "$FORMAT" in
+case "$1" in
     pdf)
-        convert_pdf "$INPUT"
+        shift
+        for f in "$@"; do
+            $PYTHON "$SCRIPT_DIR/make_fillable.py" "$f"
+        done
         ;;
-    docx)
-        convert_docx "$INPUT"
+    docx|html)
+        for f in "$@"; do
+            pandoc "$f" -o "${f%.*}.$1" --standalone
+        done
         ;;
     all)
-        convert_all "$INPUT"
+        shift
+        for f in "$@"; do
+            $PYTHON "$SCRIPT_DIR/make_fillable.py" "$f"
+            pandoc "$f" -o "${f%.*}.docx" --standalone 2>/dev/null
+            pandoc "$f" -o "${f%.*}.html" --standalone 2>/dev/null
+        done
         ;;
     *)
-        echo -e "${RED}Unknown format: $FORMAT${NC}"
-        usage
+        echo "Usage: $0 <pdf|docx|html|all> <file.md>..."
+        echo ""
+        echo "Examples:"
+        echo "  $0 pdf pressure-washing/01-service-agreement.md"
+        echo "  $0 all templates/*.md"
         ;;
 esac

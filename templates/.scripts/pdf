@@ -1,0 +1,11 @@
+#!/bin/bash
+# Wrapper to run make_fillable.py with correct Python
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+VENV_PYTHON="$SCRIPT_DIR/venv/bin/python"
+
+# Use venv python if available, otherwise system python
+if [ -f "$VENV_PYTHON" ]; then
+    exec "$VENV_PYTHON" "$SCRIPT_DIR/make_fillable.py" "$@"
+else
+    exec python3 "$SCRIPT_DIR/make_fillable.py" "$@"
+fi
