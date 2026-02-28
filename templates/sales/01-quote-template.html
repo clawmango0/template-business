@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-quote-template</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#service-quote-proposal" id="toc-service-quote-proposal">SERVICE QUOTE / PROPOSAL</a>
+<ul>
+<li><a href="#company-header" id="toc-company-header">COMPANY
+HEADER</a></li>
+<li><a href="#quote-details" id="toc-quote-details">QUOTE
+DETAILS</a></li>
+<li><a href="#customer-information" id="toc-customer-information">CUSTOMER INFORMATION</a></li>
+<li><a href="#services-quoted" id="toc-services-quoted">SERVICES
+QUOTED</a>
+<ul>
+<li><a href="#primary-service" id="toc-primary-service">Primary
+Service</a></li>
+<li><a href="#additional-services" id="toc-additional-services">Additional Services</a></li>
+<li><a href="#materialssupplies" id="toc-materialssupplies">Materials/Supplies</a></li>
+</ul></li>
+<li><a href="#pricing-summary" id="toc-pricing-summary">PRICING
+SUMMARY</a></li>
+<li><a href="#payment-terms" id="toc-payment-terms">PAYMENT
+TERMS</a></li>
+<li><a href="#schedule" id="toc-schedule">SCHEDULE</a></li>
+<li><a href="#whats-included" id="toc-whats-included">WHAT’S
+INCLUDED</a></li>
+<li><a href="#whats-not-included" id="toc-whats-not-included">WHAT’S NOT
+INCLUDED</a></li>
+<li><a href="#customer-options" id="toc-customer-options">CUSTOMER
+OPTIONS</a>
+<ul>
+<li><a href="#option-a-standard-service" id="toc-option-a-standard-service">Option A: Standard Service</a></li>
+<li><a href="#option-b-premium-service" id="toc-option-b-premium-service">Option B: Premium Service</a></li>
+<li><a href="#option-c-basic-service" id="toc-option-c-basic-service">Option C: Basic Service</a></li>
+</ul></li>
+<li><a href="#guarantee" id="toc-guarantee">GUARANTEE</a></li>
+<li><a href="#acceptance" id="toc-acceptance">ACCEPTANCE</a></li>
+<li><a href="#next-steps" id="toc-next-steps">NEXT STEPS</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="service-quote-proposal">SERVICE QUOTE / PROPOSAL</h1>
+<hr />
+<h2 id="company-header">COMPANY HEADER</h2>
+<p><strong>Logo/Company Name</strong> [COMPANY NAME] [Address] [City,
+State ZIP] [Phone] | [Email]</p>
+<hr />
+<h2 id="quote-details">QUOTE DETAILS</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td>Quote #</td>
+<td>[QUOTE-001]</td>
+</tr>
+<tr class="even">
+<td>Date</td>
+<td>[DATE]</td>
+</tr>
+<tr class="odd">
+<td>Valid Until</td>
+<td>[EXPIRY DATE]</td>
+</tr>
+<tr class="even">
+<td>Customer</td>
+<td>[CUSTOMER NAME]</td>
+</tr>
+<tr class="odd">
+<td>Property</td>
+<td>[SERVICE ADDRESS]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="customer-information">CUSTOMER INFORMATION</h2>
+<p><strong>Contact:</strong> [NAME] <strong>Phone:</strong> [PHONE]
+<strong>Email:</strong> [EMAIL] <strong>How Found:</strong>
+[REFERRAL/AD/ETC]</p>
+<hr />
+<h2 id="services-quoted">SERVICES QUOTED</h2>
+<h3 id="primary-service">Primary Service</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Qty</th>
+<th>Unit Price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>$</td>
+<td>$</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>$</td>
+<td>$</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>$</td>
+<td>$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="additional-services">Additional Services</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Qty</th>
+<th>Unit Price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>$</td>
+<td>$</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>$</td>
+<td>$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="materialssupplies">Materials/Supplies</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Description</th>
+<th>Qty</th>
+<th>Unit Price</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>$</td>
+<td>$</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>$</td>
+<td>$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pricing-summary">PRICING SUMMARY</h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Service Total</td>
+<td>$</td>
+</tr>
+<tr class="even">
+<td>Materials</td>
+<td>$</td>
+</tr>
+<tr class="odd">
+<td><strong>Subtotal</strong></td>
+<td><strong>$</strong></td>
+</tr>
+<tr class="even">
+<td>Tax (if applicable)</td>
+<td>$</td>
+</tr>
+<tr class="odd">
+<td><strong>TOTAL</strong></td>
+<td><strong>$</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="payment-terms">PAYMENT TERMS</h2>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Due upon completion</label></li>
+<li><label><input type="checkbox"></input>50% deposit, 50% on
+completion</label></li>
+<li><label><input type="checkbox"></input>Net 15</label></li>
+<li><label><input type="checkbox"></input>Net 30</label></li>
+<li><label><input type="checkbox"></input>Payment plan:
+____________</label></li>
+</ul>
+<p><strong>Accepted Payment Methods:</strong> - [ ] Cash [ ] Check [ ]
+Credit Card [ ] Venmo [ ] Zelle [ ] PayPal</p>
+<hr />
+<h2 id="schedule">SCHEDULE</h2>
+<p><strong>Estimated Start Date:</strong> [DATE] <strong>Estimated
+Completion:</strong> [DATE] <strong>Estimated Duration:</strong>
+[HOURS/DAYS]</p>
+<p><strong>Schedule is subject to:</strong> - Weather conditions -
+Customer availability - Material availability</p>
+<hr />
+<h2 id="whats-included">WHAT’S INCLUDED</h2>
+<ul>
+<li>Professional service by trained technicians</li>
+<li>Quality materials and supplies</li>
+<li>Cleanup and debris removal</li>
+<li>Satisfaction guarantee</li>
+<li>Before/after documentation</li>
+</ul>
+<hr />
+<h2 id="whats-not-included">WHAT’S NOT INCLUDED</h2>
+<ul>
+<li>Repairs or modifications</li>
+<li>Unforeseen conditions</li>
+<li>Permits (if required)</li>
+<li>Post-service maintenance</li>
+</ul>
+<hr />
+<h2 id="customer-options">CUSTOMER OPTIONS</h2>
+<h3 id="option-a-standard-service">Option A: Standard Service</h3>
+<ul>
+<li>$____________</li>
+<li>Includes: ____________</li>
+<li>Timeline: ____________</li>
+</ul>
+<h3 id="option-b-premium-service">Option B: Premium Service</h3>
+<ul>
+<li>$____________</li>
+<li>Includes: ____________</li>
+<li>Timeline: ____________</li>
+</ul>
+<h3 id="option-c-basic-service">Option C: Basic Service</h3>
+<ul>
+<li>$____________</li>
+<li>Includes: ____________</li>
+<li>Timeline: ____________</li>
+</ul>
+<hr />
+<h2 id="guarantee">GUARANTEE</h2>
+<p>We stand behind our work with a [30/60/90]-day satisfaction
+guarantee.</p>
+<p>If you’re not satisfied with our service, contact us within [48]
+hours for a re-service at no additional charge.</p>
+<hr />
+<h2 id="acceptance">ACCEPTANCE</h2>
+<p><strong>To proceed with this quote:</strong></p>
+<ol type="1">
+<li>Sign below</li>
+<li>Return with deposit (if required)</li>
+<li>We’ll schedule your service</li>
+</ol>
+<p><strong>Customer Authorization:</strong></p>
+<p>Signature: _____________________</p>
+<p>Print Name: _____________________</p>
+<p>Date: _____________________</p>
+<hr />
+<h2 id="next-steps">NEXT STEPS</h2>
+<ol type="1">
+<li>We receive your signed quote</li>
+<li>We confirm your service date</li>
+<li>We arrive on schedule</li>
+<li>You pay upon completion</li>
+</ol>
+<p><strong>Questions?</strong> [PHONE] | [EMAIL]</p>
+<hr />
+<p><em>Thank you for your business!</em></p>
+<p>[COMPANY NAME] [Tagline or motto]</p>
+</body>
+</html>

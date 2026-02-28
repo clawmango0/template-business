@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>02-property-inspection</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#property-inspection-form" id="toc-property-inspection-form">PROPERTY INSPECTION FORM</a>
+<ul>
+<li><a href="#property-details" id="toc-property-details">PROPERTY
+DETAILS</a></li>
+<li><a href="#areas-to-service" id="toc-areas-to-service">AREAS TO
+SERVICE</a></li>
+<li><a href="#pre-existing-conditions" id="toc-pre-existing-conditions">PRE-EXISTING CONDITIONS</a>
+<ul>
+<li><a href="#stains-identified" id="toc-stains-identified">Stains
+Identified</a></li>
+<li><a href="#areas-of-concern" id="toc-areas-of-concern">Areas of
+Concern</a></li>
+<li><a href="#surfaces-requiring-special-care" id="toc-surfaces-requiring-special-care">Surfaces Requiring Special
+Care</a></li>
+</ul></li>
+<li><a href="#protection-needed" id="toc-protection-needed">PROTECTION
+NEEDED</a></li>
+<li><a href="#estimate" id="toc-estimate">ESTIMATE</a></li>
+<li><a href="#photos" id="toc-photos">PHOTOS</a></li>
+<li><a href="#technician-notes" id="toc-technician-notes">TECHNICIAN
+NOTES</a></li>
+<li><a href="#customer-acknowledgment" id="toc-customer-acknowledgment">CUSTOMER ACKNOWLEDGMENT</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="property-inspection-form">PROPERTY INSPECTION FORM</h1>
+<p><strong>Date:</strong> [DATE] <strong>Technician:</strong> [NAME]
+<strong>Property Address:</strong> [ADDRESS]</p>
+<hr />
+<h2 id="property-details">PROPERTY DETAILS</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Field</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Property Type</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Year Built</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Square Footage</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Number of Levels</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Roof Type</td>
+<td>[ ] Shingle [ ] Tile [ ] Metal [ ] Flat</td>
+</tr>
+<tr class="even">
+<td>Siding Type</td>
+<td>[ ] Brick [ ] Vinyl [ ] Stucco [ ] Wood [ ] Other</td>
+</tr>
+<tr class="odd">
+<td>Driveway Material</td>
+<td>[ ] Concrete [ ] Asphalt [ ] Pavers</td>
+</tr>
+<tr class="even">
+<td>Walkway Material</td>
+<td>[ ] Concrete [ ] Stone [ ] Pavers</td>
+</tr>
+<tr class="odd">
+<td>Fence</td>
+<td>[ ] Yes [ ] No - Type: __________</td>
+</tr>
+<tr class="even">
+<td>Patio/Deck</td>
+<td>[ ] Yes [ ] No - Type: __________</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="areas-to-service">AREAS TO SERVICE</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Area</th>
+<th>Condition</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Driveway</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Walkway</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Front Porch</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Sidewalks</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Garage Floor</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>House Siding</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Fence</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Patio/Deck</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Gutters</td>
+<td>[ ] Good [ ] Fair [ ] Poor</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="pre-existing-conditions">PRE-EXISTING CONDITIONS</h2>
+<h3 id="stains-identified">Stains Identified</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Oil/Grease Stains - Location:
+__________</label></li>
+<li><label><input type="checkbox"></input>Rust Stains - Location:
+__________</label></li>
+<li><label><input type="checkbox"></input>Mold/Mildew - Location:
+__________</label></li>
+<li><label><input type="checkbox"></input>Algae - Location:
+__________</label></li>
+<li><label><input type="checkbox"></input>Hard Water Stains - Location:
+__________</label></li>
+<li><label><input type="checkbox"></input>Other: __________</label></li>
+</ul>
+<h3 id="areas-of-concern">Areas of Concern</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Area</th>
+<th>Issue</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>[ ] Low [ ] Med [ ] High</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>[ ] Low [ ] Med [ ] High</td>
+</tr>
+</tbody>
+</table>
+<h3 id="surfaces-requiring-special-care">Surfaces Requiring Special
+Care</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Painted surfaces - may require lower
+pressure</label></li>
+<li><label><input type="checkbox"></input>Wood surfaces - risk of
+damage</label></li>
+<li><label><input type="checkbox"></input>Plants/landscaping - protect from
+chemicals</label></li>
+<li><label><input type="checkbox"></input>Electrical outlets - cover before
+washing</label></li>
+<li><label><input type="checkbox"></input>Septic systems - avoid
+runoff</label></li>
+<li><label><input type="checkbox"></input>Other: __________</label></li>
+</ul>
+<hr />
+<h2 id="protection-needed">PROTECTION NEEDED</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Action Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vehicles</td>
+<td>[ ] Move [ ] Cover</td>
+</tr>
+<tr class="even">
+<td>Furniture</td>
+<td>[ ] Move [ ] Cover</td>
+</tr>
+<tr class="odd">
+<td>Plants/Shrubs</td>
+<td>[ ] Cover [ ] Wet down</td>
+</tr>
+<tr class="even">
+<td>Electrical</td>
+<td>[ ] Cover outlets</td>
+</tr>
+<tr class="odd">
+<td>Sprinklers</td>
+<td>[ ] Note location</td>
+</tr>
+<tr class="even">
+<td>AC Unit</td>
+<td>[ ] Cover</td>
+</tr>
+<tr class="odd">
+<td>Windows</td>
+<td>[ ] Check seals</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="estimate">ESTIMATE</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Service</th>
+<th>Price</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>$</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>$</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>$</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td><strong>$</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="photos">PHOTOS</h2>
+<p><strong>Before Photos Taken:</strong> [ ] Yes [ ] No</p>
+<table>
+<thead>
+<tr class="header">
+<th>Photo #</th>
+<th>Description</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="technician-notes">TECHNICIAN NOTES</h2>
+<hr />
+<hr />
+<hr />
+<hr />
+<h2 id="customer-acknowledgment">CUSTOMER ACKNOWLEDGMENT</h2>
+<p>I acknowledge that: - Pre-existing conditions have been identified -
+Some stains may not fully remove - Property has been inspected and
+documented</p>
+<p><strong>Customer Signature:</strong> _____________________
+<strong>Date:</strong> _____________________</p>
+<hr />
+<p><em>Use this form before every job to document property condition and
+protect yourself.</em></p>
+</body>
+</html>

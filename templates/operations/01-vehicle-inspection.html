@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>01-vehicle-inspection</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#vehicle-daily-inspection-form" id="toc-vehicle-daily-inspection-form">VEHICLE DAILY INSPECTION FORM</a>
+<ul>
+<li><a href="#pre-trip-inspection" id="toc-pre-trip-inspection">PRE-TRIP
+INSPECTION</a>
+<ul>
+<li><a href="#exterior" id="toc-exterior">Exterior</a></li>
+<li><a href="#under-hood" id="toc-under-hood">Under Hood</a></li>
+<li><a href="#interior" id="toc-interior">Interior</a></li>
+<li><a href="#equipment" id="toc-equipment">Equipment</a></li>
+</ul></li>
+<li><a href="#fluids-check" id="toc-fluids-check">FLUIDS CHECK</a></li>
+<li><a href="#defectsnotes" id="toc-defectsnotes">DEFECTS/NOTES</a></li>
+<li><a href="#daily-log" id="toc-daily-log">DAILY LOG</a></li>
+<li><a href="#post-trip" id="toc-post-trip">POST-TRIP</a>
+<ul>
+<li><a href="#parking" id="toc-parking">Parking</a></li>
+<li><a href="#any-issues-today" id="toc-any-issues-today">Any Issues
+Today?</a></li>
+</ul></li>
+<li><a href="#sign-off" id="toc-sign-off">SIGN-OFF</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="vehicle-daily-inspection-form">VEHICLE DAILY INSPECTION
+FORM</h1>
+<p><strong>Driver/Technician:</strong> [NAME] <strong>Vehicle:</strong>
+[YEAR] [MAKE] [MODEL] <strong>License Plate:</strong> [PLATE#]
+<strong>Date:</strong> [DATE] <strong>Odometer:</strong> [MILES]</p>
+<hr />
+<h2 id="pre-trip-inspection">PRE-TRIP INSPECTION</h2>
+<h3 id="exterior">Exterior</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>OK</th>
+<th>Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tires - Front Left</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Tires - Front Right</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Tires - Rear Left</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Tires - Rear Right</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Spare Tire</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Headlights</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Tail Lights</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Brake Lights</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Turn Signals</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Hazards</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Windshield</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Mirrors</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Body Damage</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>License Plate</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="under-hood">Under Hood</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>OK</th>
+<th>Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Oil Level</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Coolant Level</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Power Steering</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Brake Fluid</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Washer Fluid</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Belts</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Hoses</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="interior">Interior</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>OK</th>
+<th>Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Horn</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Gauges</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Dashboard Lights</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Air Conditioning</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Heater</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>wipers</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Seat Belts</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Backup Camera</td>
+<td>[ ]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="equipment">Equipment</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Present</th>
+<th>Working</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>First Aid Kit</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="even">
+<td>Fire Extinguisher</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="odd">
+<td>Jumper Cables</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="even">
+<td>Flashlight</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="odd">
+<td>Reflective Triangles</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="even">
+<td>Tool Kit</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="odd">
+<td>Registration</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+<tr class="even">
+<td>Insurance Card</td>
+<td>[ ]</td>
+<td>[ ]</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="fluids-check">FLUIDS CHECK</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Fluid</th>
+<th>Level</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Oil</td>
+<td>[ ] OK [ ] Low</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Coolant</td>
+<td>[ ] OK [ ] Low</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Brake</td>
+<td>[ ] OK [ ] Low</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Power Steering</td>
+<td>[ ] OK [ ] Low</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Washer</td>
+<td>[ ] OK [ ] Low</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="defectsnotes">DEFECTS/NOTES</h2>
+<hr />
+<hr />
+<hr />
+<hr />
+<h2 id="daily-log">DAILY LOG</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Trip #</th>
+<th>From</th>
+<th>To</th>
+<th>Miles</th>
+<th>Fuel</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Miles Today:</strong> _______ <strong>Fuel
+Added:</strong> $_______ gallons @ $_______/gallon</p>
+<hr />
+<h2 id="post-trip">POST-TRIP</h2>
+<p><strong>End Odometer:</strong> _______</p>
+<h3 id="parking">Parking</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>Parked in safe location</label></li>
+<li><label><input type="checkbox"></input>Secured</label></li>
+<li><label><input type="checkbox"></input>Items removed/secured</label></li>
+</ul>
+<h3 id="any-issues-today">Any Issues Today?</h3>
+<ul class="task-list">
+<li><label><input type="checkbox"></input>No issues</label></li>
+<li><label><input type="checkbox"></input>Yes - describe below:</label></li>
+</ul>
+<hr />
+<hr />
+<h2 id="sign-off">SIGN-OFF</h2>
+<p><strong>Driver Signature:</strong> _____________________
+<strong>Date:</strong> _____________________</p>
+<p><strong>Supervisor Review:</strong> _____________________
+<strong>Date:</strong> _____________________</p>
+<hr />
+<p><em>Complete daily. Submit weekly. Keep for DOT compliance if
+applicable.</em></p>
+</body>
+</html>

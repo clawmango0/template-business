@@ -1,0 +1,70 @@
+/* Template PDF Styles */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    margin: 1in;
+}
+
+h1 {
+    font-size: 18pt;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+}
+
+h2 {
+    font-size: 14pt;
+    color: #34495e;
+    margin-top: 20pt;
+}
+
+h3 {
+    font-size: 12pt;
+    color: #7f8c8d;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10pt 0;
+}
+
+th, td {
+    border: 1px solid #bdc3c7;
+    padding: 8pt;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #ecf0f1;
+}
+
+.checkbox {
+    margin-right: 8pt;
+}
+
+.blockquote {
+    border-left: 4px solid #3498db;
+    padding-left: 12pt;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+code {
+    background-color: #f8f9fa;
+    padding: 2pt 4pt;
+    border-radius: 3pt;
+}
+
+pre {
+    background-color: #f8f9fa;
+    padding: 10pt;
+    border-radius: 5pt;
+    overflow-x: auto;
+}
